@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: local-web:latest
+    container_name: web
+    hostname: testing
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      # dev home
+      - ./www/:/etc/www/
+      # expose apache2 and php config to host
+      - ./docker/etc/:/docker/etc/
+      # expose logs to host
+      # - ./docker/log/:/var/log/

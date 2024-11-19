@@ -1,0 +1,9 @@
+# home
+/www/
+
+# docker
+/docker/
+
+# other
+**/php-spx/spx.so
+**/*.xx*
