@@ -5,5 +5,4 @@
 /docker/
 
 # other
-**/php-spx/spx.so
 **/*.xx*
