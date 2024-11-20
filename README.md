@@ -1,6 +1,6 @@
 # local-web
 
-A docker container for apache web server.
+An alpine apache PHP local server with CA self-sign SSL and build-in easy site setup command.
 
 > _**♠️ Developed By [Thuku](https://github.com/xthukuh)**_
 
@@ -9,6 +9,30 @@ A docker container for apache web server.
 - PHP83
 - Composer
 - Certificate Authority selfsign
+
+### `docker-compose.yml`
+
+```yml
+name: local-web
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: local-web:latest
+    container_name: web
+    hostname: testing
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      # (required) dev home
+      - ./www/:/etc/www/
+      # (optional) expose apache2 and php config to host
+      - ./docker/etc/:/docker/etc/
+      # (optional) expose logs to host
+      - ./docker/log/:/var/log/
+```
 
 ### Docker Container
 
