@@ -10,27 +10,6 @@ An alpine apache PHP local server with CA self-sign SSL and build-in easy site s
 - Composer
 - Certificate Authority selfsign
 
-### Example `docker-compose.yml`
-
-```yml
-name: local-web
-services:
-  web:
-    image: xthukuh/local-web:latest
-    container_name: web
-    hostname: testing
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      # (required) dev home
-      - ./www/:/etc/www/
-      # (optional) expose apache2 and php config to host
-      - ./docker/etc/:/docker/etc/
-      # (optional) expose logs to host
-      - ./docker/log/:/var/log/
-```
-
 ### Docker Container
 
 ```sh
@@ -59,6 +38,20 @@ While in shell run for built-in commands help docs:
 ```sh
 setup --help
 selfsign --help
+```
+
+### Docker Build & Push
+
+Build and push to docker hub  [xthukuh/local-web](https://hub.docker.com/repository/docker/xthukuh/local-web/general)
+
+```sh
+# build image
+docker build -t xthukuh/local-web:latest .
+# docker build xthukuh/local-web:v1.0 .
+
+# push image to repo
+docker push xthukuh/local-web:latest
+# docker push xthukuh/local-web:v1.0
 ```
 
 ### Setup
