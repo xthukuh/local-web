@@ -10,16 +10,13 @@ An alpine apache PHP local server with CA self-sign SSL and build-in easy site s
 - Composer
 - Certificate Authority selfsign
 
-### `docker-compose.yml`
+### Example `docker-compose.yml`
 
 ```yml
 name: local-web
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: local-web:latest
+    image: xthukuh/local-web:latest
     container_name: web
     hostname: testing
     ports:
