@@ -47,11 +47,11 @@ Build and push to docker hub  [xthukuh/local-web](https://hub.docker.com/reposit
 ```sh
 # build image
 docker build -t xthukuh/local-web:latest .
-# docker build xthukuh/local-web:v1.0 .
+docker build -t xthukuh/local-web:v1.0.0 .
 
 # push image to repo
 docker push xthukuh/local-web:latest
-# docker push xthukuh/local-web:v1.0
+docker push xthukuh/local-web:v1.0.0
 ```
 
 ### Setup

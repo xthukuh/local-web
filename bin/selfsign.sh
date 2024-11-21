@@ -728,7 +728,7 @@ esac
 # 
 # ./selfsign.sh authority -c www/config/ssl
 #
-# ./selfsign.sh certificate -d "test.com www.test.com" -s www/config/ssl/test -c www/config/ssl/ca
+# ./selfsign.sh certificate -d test.site -s www/config/ssl/test -c www/config/ssl/ca
 #
 # ./selfsign.sh show -f sites.xx/config/ssl/certificate_authority.pem
 # ./selfsign.sh show -f sites.xx/test/ssl/certificate.pem
@@ -736,4 +736,4 @@ esac
 # ./selfsign.sh expiry -f www/config/ssl/ca/certificate_authority.pem
 # ./selfsign.sh expiry -f www/config/ssl/test/certificate.pem
 #
-# ./selfsign.sh verify -d "test.com www.test.com" -s www/config/ssl/test -c www/config/ssl/ca
+# ./selfsign.sh verify -d test.site -s www/config/ssl/test -c www/config/ssl/ca

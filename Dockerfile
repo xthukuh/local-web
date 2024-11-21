@@ -32,6 +32,12 @@ RUN apk add inotify-tools
 RUN apk add zsh zsh-vcs
 COPY --chown=root:root bin/zshrc /etc/zsh/zshrc
 
+# install mysql
+RUN apk add mysql mysql-client && \
+  mkdir -p /var/lib/mysql && \
+  mkdir -p /etc/mysql/conf.d && \
+  mkdir -p /var/run/mysql/
+
 # install php
 RUN apk add \
   php83 \

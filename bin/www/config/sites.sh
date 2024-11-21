@@ -26,9 +26,9 @@ fi
 
 # (default) test
 if [ -d '/etc/www/html/test' ]; then
-	echo 'Setup test.com...'
+	echo 'Setup test...'
 	setup -n 'test' -d 'test.site' -p '/etc/www/html/test'
-	echo 'Setup test.com - OK'
+	echo 'Setup test - OK'
 fi
 
 # ...

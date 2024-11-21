@@ -453,6 +453,6 @@ else
 fi
 
 # --- test
-## ./setup -n "test" -d "test.com www.test.com" -p "/etc/www/html/test" -l "/etc/www/logs" -s "/etc/www/config/ssl" -c "/etc/www/config/ssl/ca" -v "/etc/www/config/vhosts"
-# ./setup -n "test" -d "test.com www.test.com" -p "/etc/www/html/test"
+## ./setup -n "test" -d test.site -p "/etc/www/html/test" -l "/etc/www/logs" -s "/etc/www/config/ssl" -c "/etc/www/config/ssl/ca" -v "/etc/www/config/vhosts"
+# ./setup -n "test" -d test.site -p "/etc/www/html/test"
 # ./setup -n "localhost" -d "localhost local.site" -p "/etc/www/html/localhost"

@@ -1,19 +1,57 @@
-name: local-web
+name: local
+networks:
+  webnet:
+    driver: bridge
+volumes:
+  mysql:
+    driver: local
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: local-web:latest
+  web:  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    # image: xthukun/local-web:latest
+    image: xthukuh/local-web:v1.0.0
     container_name: web
     hostname: testing
     ports:
       - 80:80
       - 443:443
+    networks:
+      - webnet
     volumes:
       # (required) dev home
       - ./www/:/etc/www/
       # (optional) expose apache2 and php config to host
       - ./docker/etc/:/docker/etc/
-      # (optional) expose logs to host
-      - ./docker/log/:/var/log/
+    depends_on:
+      - mariadb
+  mariadb:  # MySQL Service - https://hub.docker.com/_/mariadb
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      TZ: Africa/Nairobi
+      MYSQL_ALLOW_EMPTY_PASSWORD: no
+      MYSQL_ROOT_PASSWORD: local
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - webnet
+  phpmyadmin:  # PHPMyAdmin (http://localhost:8080) - https://hub.docker.com/_/phpmyadmin
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: local
+    ports:
+      - 8080:80
+    networks:
+      - webnet
