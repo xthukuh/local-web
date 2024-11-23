@@ -32,7 +32,11 @@ if [ -d /docker/etc/ ]; then
 		if [ -d /etc/apache2.bak/ ]; then
 			echo 'Expose apache to host - restore config from backup'
 			rm /etc/apache2/ 2> /dev/null
-			cp -r /etc/apache2.bak/ /etc/apache2/
+			if [ -d /etc/apache2/ ]; then
+				cp -r /etc/apache2.bak/* /etc/apache2/
+			else
+				cp -r /etc/apache2.bak/ /etc/apache2/
+			fi
 		fi
 
 		# copy config to host
@@ -66,7 +70,11 @@ if [ -d /docker/etc/ ]; then
 		if [ -d /etc/php83.bak/ ]; then
 			echo 'Expose php to host - restore config from backup'
 			rm /etc/php83/ 2> /dev/null
-			cp -r /etc/php83.bak/ /etc/php8/
+			if [ -d /etc/php8/ ]; then
+				cp -r /etc/php83.bak/* /etc/php8/
+			else
+				cp -r /etc/php83.bak/ /etc/php8/
+			fi
 		fi
 
 		# copy config to host

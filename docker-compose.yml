@@ -52,6 +52,13 @@ services:
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: local
+    volumes:
+      # [manually-copied-config] /etc/phpmyadmin/ => /docker/etc/phpmyadmin (./docker/etc/phpmyadmin/)
+      # - ./docker/etc/:/docker/etc/
+      # > cp -p /etc/phpmyadmin/config.inc.php /etc/phpmyadmin/config.inc.bak.php
+      # > cp -r /etc/phpmyadmin/ /etc/phpmyadmin.bak/
+      # > cp -r /etc/phpmyadmin/ /docker/etc/
+      - ./docker/etc/phpmyadmin/:/etc/phpmyadmin/
     ports:
       - 8080:80
     networks:
