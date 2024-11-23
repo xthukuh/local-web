@@ -16,19 +16,10 @@
 #     --help|-h       *optional* Show command usage docs.
 # -------------------------------------------------------------------------------------------------------------------------------
 
+# default sites:
+setup -n localhost -d 'localhost local.site' -p /etc/www/html/localhost
+setup -n test -d test.site -p /etc/www/html/test
 
-# (default) localhost
-if [ -d '/etc/www/html/localhost' ]; then
-	echo 'Setup localhost...'
-	setup -n 'localhost' -d 'localhost local.site' -p '/etc/www/html/localhost'
-	echo 'Setup localhost - OK'
-fi
-
-# (default) test
-if [ -d '/etc/www/html/test' ]; then
-	echo 'Setup test...'
-	setup -n 'test' -d 'test.site' -p '/etc/www/html/test'
-	echo 'Setup test - OK'
-fi
+# other sites:
 
 # ...

@@ -6,21 +6,31 @@ An alpine apache PHP local server with CA self-sign SSL and build-in easy site s
 
 ### Components
 - Apache2
-- PHP83
-- Composer
+- php83
+- composer
 - Certificate Authority selfsign
 
 ### Docker Container
 
 ```sh
-# verbose
-docker compose up --build
+cd local-web
 
-# daemon
+# container: run - verbose
+# docker compose up --build
+docker compose up
+
+# container: run - daemon
+# docker compose up --build -d
 docker compose up -d
 
-# shutdown
+# container: shutdown
 docker compose down
+
+# container: show runtime logs
+docker compose logs -f
+
+# docker show all containers
+docker ps -a
 ```
 
 ### Docker Shell
@@ -28,9 +38,9 @@ docker compose down
 To access running container shell terminal run:
 
 ```sh
-docker exec -it web bash
 # docker exec -it web sh
 # docker exec -it web zsh
+docker exec -it web bash
 ```
 
 While in shell run for built-in commands help docs:
@@ -78,4 +88,8 @@ cd local-web
 Import-Certificate -FilePath "www\config\ssl\ca\certificate_authority.pem" -CertStoreLocation "Cert:\LocalMachine\Root"
 ```
 
-**Edit `./www/config/sites.sh` to setup websites**
+> **Edit `./www/config/sites.sh` to setup websites**
+
+---
+
+# v1.0.0
