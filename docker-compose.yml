@@ -2,9 +2,9 @@ name: local
 networks:
   webnet:
     driver: bridge
-volumes:
-  mysql:
-    driver: local
+# volumes: # (see services > mariadb)
+#   mysql:
+#     driver: local
 services:
   web:  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
     # build:
@@ -36,7 +36,10 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: no
       MYSQL_ROOT_PASSWORD: local
     volumes:
-      - mysql:/var/lib/mysql
+      # [manually-copy-mysql-volume]
+      # - mysql:/var/lib/mysql
+      # > docker cp -q mariadb:/var/lib/mysql docker/etc/mysql
+      - ./docker/lib/mysql:/var/lib/mysql
     ports:
       - 3306:3306
     networks:
