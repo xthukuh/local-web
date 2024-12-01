@@ -2,9 +2,11 @@ name: local
 networks:
   webnet:
     driver: bridge
-# volumes: # (see services > mariadb)
-#   mysql:
-#     driver: local
+volumes:
+  mysql: # /var/lib/mysql
+    driver: local
+  phpmyadmin: # /etc/phpmyadmin
+    driver: local
 services:
   web:  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
     # build:
@@ -36,10 +38,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: no
       MYSQL_ROOT_PASSWORD: local
     volumes:
-      # [manually-copy-mysql-volume]
-      # - mysql:/var/lib/mysql
-      # > docker cp -q mariadb:/var/lib/mysql docker/etc/mysql
-      - ./docker/lib/mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     ports:
       - 3306:3306
     networks:
@@ -56,12 +55,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: local
     volumes:
-      # [manually-copied-config] /etc/phpmyadmin/ => /docker/etc/phpmyadmin (./docker/etc/phpmyadmin/)
-      # - ./docker/etc/:/docker/etc/
-      # > cp -p /etc/phpmyadmin/config.inc.php /etc/phpmyadmin/config.inc.bak.php
-      # > cp -r /etc/phpmyadmin/ /etc/phpmyadmin.bak/
-      # > cp -r /etc/phpmyadmin/ /docker/etc/
-      - ./docker/etc/phpmyadmin/:/etc/phpmyadmin/
+      - phpmyadmin:/etc/phpmyadmin
     ports:
       - 8080:80
     networks:
