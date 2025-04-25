@@ -1,12 +1,15 @@
 name: local
+
 networks:
   webnet:
     driver: bridge
+
 volumes:
   mysql: # /var/lib/mysql
     driver: local
   phpmyadmin: # /etc/phpmyadmin
     driver: local
+
 services:
   web:  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
     # build:
@@ -30,7 +33,7 @@ services:
     depends_on:
       - mariadb
   mariadb:  # MySQL Service - https://hub.docker.com/_/mariadb
-    image: mariadb
+    image: mariadb:11.7.2
     container_name: mariadb
     restart: unless-stopped
     environment:
@@ -44,7 +47,7 @@ services:
     networks:
       - webnet
   phpmyadmin:  # PHPMyAdmin (http://localhost:8080) - https://hub.docker.com/_/phpmyadmin
-    image: phpmyadmin
+    image: phpmyadmin:5.2.2
     container_name: phpmyadmin
     restart: unless-stopped
     depends_on:

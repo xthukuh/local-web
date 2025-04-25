@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/alpine
 # don't use alpine:edge as it is not refreshed that often
 # FROM alpine:latest
-FROM alpine:3.20
+FROM alpine:3.21
 LABEL maintainer="Thuku <https://github.com/xthukuh>"
 
 # expose ports
