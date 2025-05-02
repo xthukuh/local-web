@@ -31,8 +31,8 @@ services:
       - ./docker/etc/:/docker/etc/
     working_dir: /etc/www/html/
     depends_on:
-      - mariadb
-  mariadb:  # MySQL Service - https://hub.docker.com/_/mariadb
+      - mysql
+  mysql:  # MySQL Service - https://hub.docker.com/_/mariadb
     image: mariadb:11.7.2
     container_name: mariadb
     restart: unless-stopped
@@ -51,9 +51,9 @@ services:
     container_name: phpmyadmin
     restart: unless-stopped
     depends_on:
-      - mariadb
+      - mysql
     environment:
-      PMA_HOST: mariadb
+      PMA_HOST: mysql
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: local
