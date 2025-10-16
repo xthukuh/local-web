@@ -2,7 +2,7 @@
 # sudo ./backup-copy.sh
 
 echo "[~] Backup copy..."
-echo "[+] composer down..."
+echo "[*] composer down..."
 docker compose down
 
 echo "[*] Copy mysql..."
@@ -13,5 +13,14 @@ docker run --rm -v local_phpmyadmin:/etc/phpmyadmin -v $(pwd)/docker/backup/phpm
 
 echo "[*] Copy hosts..."
 cp -puf /mnt/c/Windows/System32/Drivers/etc/hosts $(pwd)/docker/backup/hosts
+
+pwd=$(pwd)
+now=$(date +"%Y%m%d-%H%M%S")
+file=local-web-docker-$now.zip
+echo "[*] Archive $file..."
+cd $pwd/docker
+zip -rq $pwd/$file .
+cd $pwd
+zipinfo -h $file
 
 echo "[+] done!"
