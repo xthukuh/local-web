@@ -63,3 +63,18 @@ services:
       - 8080:80
     networks:
       - webnet
+  mailpit: # MailPit (http://localhost:8025) - https://hub.docker.com/r/axllent/mailpit
+    image: axllent/mailpit:v1.27.9
+    container_name: mailpit
+    restart: unless-stopped
+    volumes:
+      - ./docker/data:/data
+    ports:
+      - 8025:8025
+      - 1025:1025
+    environment:
+      MP_MAX_MESSAGES: 5000
+      MP_DATABASE: /data/mailpit.db
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
