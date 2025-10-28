@@ -35,8 +35,6 @@ services:
     depends_on:
       - mysql
       - mailpit
-    environment:
-      MAILER_DSN: smtp://mailpit:1025
 
   # MySQL Service - https://hub.docker.com/_/mariadb
   mysql:
@@ -83,6 +81,8 @@ services:
     ports:
       - 8025:8025
       - 1025:1025
+    networks:
+      - webnet
     environment:
       MP_MAX_MESSAGES: 5000
       MP_DATABASE: /data/mailpit.db
