@@ -11,7 +11,9 @@ volumes:
     driver: local
 
 services:
-  web:  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
+
+  # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
+  web:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
@@ -32,7 +34,12 @@ services:
     working_dir: /etc/www/html/
     depends_on:
       - mysql
-  mysql:  # MySQL Service - https://hub.docker.com/_/mariadb
+      - mailpit
+    environment:
+      MAILER_DSN: smtp://mailpit:1025
+
+  # MySQL Service - https://hub.docker.com/_/mariadb
+  mysql:
     image: mariadb:11.7.2
     container_name: mariadb
     restart: unless-stopped
@@ -46,7 +53,9 @@ services:
       - 3306:3306
     networks:
       - webnet
-  phpmyadmin:  # PHPMyAdmin (http://localhost:8080) - https://hub.docker.com/_/phpmyadmin
+
+  # PHPMyAdmin (http://localhost:8080) - https://hub.docker.com/_/phpmyadmin
+  phpmyadmin:
     image: phpmyadmin:5.2.2
     container_name: phpmyadmin
     restart: unless-stopped
@@ -63,7 +72,9 @@ services:
       - 8080:80
     networks:
       - webnet
-  mailpit: # MailPit (http://localhost:8025) - https://hub.docker.com/r/axllent/mailpit
+
+  # MailPit (http://localhost:8025) - https://hub.docker.com/r/axllent/mailpit
+  mailpit:
     image: axllent/mailpit:v1.27.9
     container_name: mailpit
     restart: unless-stopped
