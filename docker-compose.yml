@@ -28,9 +28,9 @@ services:
       - webnet
     volumes:
       # (required) dev home
-      - ./www/:/etc/www/
+      - ./www/:/etc/www/:delegated
       # (optional) expose apache2 and php config to host
-      - ./docker/etc/:/docker/etc/
+      - ./docker/etc/:/docker/etc/:delegated
     working_dir: /etc/www/html/
     depends_on:
       - mysql
