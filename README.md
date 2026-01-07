@@ -55,6 +55,10 @@ selfsign --help
 Build and push to docker hub  [xthukuh/local-web](https://hub.docker.com/repository/docker/xthukuh/local-web/general)
 
 ```sh
+# build and test
+docker compose build --no-cache
+docker compose up -d
+
 # build image
 docker build -t xthukuh/local-web:latest .
 docker build -t xthukuh/local-web:v1.0.0 .
@@ -62,6 +66,9 @@ docker build -t xthukuh/local-web:v1.0.0 .
 # push image to repo
 docker push xthukuh/local-web:latest
 docker push xthukuh/local-web:v1.0.0
+
+# pull image
+docker pull xthukuh/local-web:v1.0.0
 ```
 
 ### Setup
