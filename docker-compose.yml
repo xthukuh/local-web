@@ -14,11 +14,11 @@ services:
 
   # Web Service - https://hub.docker.com/r/xthukuh/local-web/tags
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     # image: xthukun/local-web:latest
-    # image: xthukuh/local-web:v1.0.0
+    image: xthukuh/local-web:v1.0.0
     container_name: web
     hostname: testing
     ports:
