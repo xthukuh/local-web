@@ -1,0 +1,55 @@
+api:
+  authentication:
+    description: Sanctum/Passport token auth patterns, scopes, and auth response format
+  responses:
+    description: Standard JSON envelope structure, API resources, HTTP status codes
+
+backend:
+  access-control:
+    description: Multi-panel ACL, role hierarchy, panel guards, impersonation, license feature gates
+  audit-trail:
+    description: ModelHandler auto-audit, HasAuditTrail trait, AuditLog service, soft-delete tracking
+  eloquent:
+    description: Model structure order, query patterns, relationships, observers
+  finance-accounting:
+    description: Double-entry bookkeeping, Money value objects, multi-currency, transaction reversals
+  laravel:
+    description: Laravel 12.x service layer, routing, DI, events, jobs, and config conventions
+  licensing:
+    description: LicenseManager service, subscription lifecycle, billing jobs, feature gate middleware
+  modular-packages:
+    description: Package structure in packages/Phoenix/*, composer path repos, service provider pattern
+  multi-tenancy:
+    description: Shared DB with tenant_id, BelongsToTenant trait, TenantScope global scope, middleware
+  validation:
+    description: Form Request classes, rule syntax, and Filament form validation patterns
+
+database:
+  migrations:
+    description: Migration conventions, column standards, foreign keys, indexes
+
+filament:
+  actions:
+    description: Filament v4 actions — all from Filament\Actions\*, row/bulk/modal/header action patterns, notifications
+  forms:
+    description: Filament v4 Schema API — form(Schema): Schema, Section from Schemas namespace, Get utility, TextEntry in forms
+  multi-panel:
+    description: 5-panel architecture, enum-driven routing, middleware rules (no constructor injection, logout on mismatch), subscription gate exclusions, resource discovery paths, provider order, modular package integration
+  resources:
+    description: Filament v4 resource structure — navigation union types (BackedEnum/UnitEnum), form/table signatures, relation managers, global search
+  schema-delegation:
+    description: Filament v4 form/table delegation to Schemas/ and Tables/ classes; custom Field extension pattern (instance $view, setUp, getDefaultChildComponents)
+  tables:
+    description: Filament v4 tables — recordActions/groupedBulkActions for resources, actions/bulkActions for relation managers, column and filter patterns
+  widgets:
+    description: Filament v4 stats overview, chart widgets, registration, and dashboard organization
+
+global:
+  error-handling:
+    description: API error response format, exception handling, and Filament error notifications
+  naming:
+    description: PHP naming conventions for classes, methods, databases, and Filament components
+
+testing:
+  feature:
+    description: Pest PHP feature test patterns, database setup, API testing, and Filament testing
